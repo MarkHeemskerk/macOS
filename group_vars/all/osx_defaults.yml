@@ -1,0 +1,393 @@
+---
+osx_defaults:
+#####################
+# General
+#####################
+  # Disable hot corners
+  wvous-tl-corner:
+    key: wvous-tl-corner
+    domain: com.apple.dock
+    type: int
+    value: "0"
+  wvous-tr-corner:
+    key: wvous-tr-corner
+    domain: com.apple.dock
+    type: int
+    value: "0"
+  wvous-bl-corner:
+    key: wvous-bl-corner
+    domain: com.apple.dock
+    type: int
+    value: "0"
+  wvous-br-corner:
+    key: wvous-br-corner
+    domain: com.apple.dock
+    type: int
+    value: "0"
+  # Change screenshot type to JPG
+  type:
+    key: type
+    domain: com.apple.screencapture
+    type: string
+    value: jpg
+  # Set default screenshot location
+  location:
+    key: location
+    domain: com.apple.screencapture
+    type: string
+    value: "~/Pictures"
+  # Remove apps from automatic startup
+#  loginwindow:
+#    key: loginwindow
+#    domain: AutoLaunchedApplicationDictionary
+#    state: absent
+#    array_add: true
+#    type: array
+#    value:
+#      - '/Applications/Alfred 5.app'
+  # Disable Desktop Widgets
+  StandardHideWidgets:
+    key: StandardHideWidgets
+    domain: com.apple.WindowManager
+    type: bool
+    value: true
+  # Enable sudo with Touch ID in dock mode
+  ignoreArd:
+    key: ignoreArd
+    domain: com.apple.security.authorization
+    type: bool
+    value: true
+#####################
+# Appearance & Input
+#####################
+  # Accent color (green)
+  AppleAccentColor:
+    key: AppleAccentColor
+    domain: NSGlobalDomain
+    type: int
+    value: "3"
+  # Enable Dark theme
+  AppleInterfaceStyle:
+    key: AppleInterfaceStyle
+    domain: NSGlobalDomain
+    type: string
+    value: Dark
+  # Disable automatic spell checking
+  NSAutomaticSpellingCorrectionEnabled:
+    key: NSAutomaticSpellingCorrectionEnabled
+    domain: NSGlobalDomain
+    type: bool
+    value: false
+  # Disable Siri
+  VoiceTriggerUserEnabled:
+    key: VoiceTriggerUserEnabled
+    domain: com.apple.Siri
+    type: bool
+    value: false
+  StatusMenuVisible:
+    key: StatusMenuVisible
+    domain: com.apple.Siri
+    type: bool
+    value: false
+  # Disable inverted scroll (Natural Scrolling)
+  com.apple.swipescrolldirection:
+    key: com.apple.swipescrolldirection
+    domain: NSGlobalDomain
+    type: bool
+    value: true 
+#####################
+# Dock
+#####################
+  # Automatically hide dock
+  autohide:
+    key: autohide
+    domain: com.apple.dock
+    type: bool
+    value: true
+  # Change size of dock
+  tilesize:
+    key: tilesize
+    domain: com.apple.dock
+    type: float
+    value: "40" 
+  # Minimize animations
+  mineffect:
+    key: mineffect
+    domain: com.apple.dock
+    type: string
+    value: scale
+  # Dock position (left side)
+  orientation:
+    key: orientation
+    domain: com.apple.dock
+    type: string
+    value: left
+#####################
+# Menu bar
+#####################
+  # Add battery % inside icon
+  BatteryShowPercentage:
+    key: BatteryShowPercentage
+    domain: com.apple.controlcenter
+    type: bool
+    value: true
+  # Remove Spotlight from menu bar
+  MenuItemHidden1:
+    key: MenuItemHidden
+    domain: com.apple.Spotlight
+    type: int
+    value: "1"
+  # Enable Weather in menu bar
+  MenuItemHidden2:
+    key: MenuItemHidden
+    domain: com.apple.weather
+    type: int
+    value: "0"
+  # DOES NOT WORK: Remove Wi-Fi from menu bar
+  #NSStatusItemVisibleWiFi:
+  #  key: "NSStatusItem Visible WiFi"
+  #  domain: com.apple.controlcenter
+  #  type: bool
+  #  value: false
+  # Show seconds in menu bar clock
+  ShowSeconds:
+    key: ShowSeconds
+    domain: com.apple.menuextra.clock
+    type: bool
+    value: true
+#####################
+# Finder
+#####################
+  # Show extensions in Finder
+  AppleShowAllExtensions:
+    key: AppleShowAllExtensions
+    domain: NSGlobalDomain
+    type: bool
+    value: true
+  # Show dot files in Finder
+  AppleShowAllFiles:
+    key: AppleShowAllFiles
+    domain: com.apple.finder
+    type: bool
+    value: true
+  # Set the default Finder view to list view
+  FXPreferredViewStyle:
+    key: FXPreferredViewStyle
+    domain: com.apple.finder
+    type: string
+    value: Nlsv
+  # Configure list view settings for all folders
+  FK_StandardViewSettings1:
+    key: FK_StandardViewSettings
+    domain: com.apple.finder
+    type: dict
+    dict_mode: add
+    value:
+      ListViewSettings:
+        columns:
+          - ascending: "1"
+            identifier: name
+            visible: "1"
+            width: "300"
+          - ascending: "0"
+            identifier: dateModified
+            visible: "1"
+            width: "181"
+          - ascending: "0"
+            identifier: size
+            visible: "1"
+            width: "97"
+        iconSize: "16"
+        showIconPreview: "0"
+        sortColumn: name
+        textSize: "12"
+        useRelativeDates: "1"
+  # Set list view for all view types
+  FK_StandardViewSettings2:
+    key: FK_StandardViewSettings
+    domain: com.apple.finder
+    type: dict
+    dict_mode: add
+    value:
+      ExtendedListViewSettings:
+        columns:
+          - ascending: "1"
+            identifier: name
+            visible: "1"
+            width: "300"
+          - ascending: "0"
+            identifier: dateModified
+            visible: "1"
+            width: "181"
+          - ascending: "0"
+            identifier: size
+            visible: "1"
+            width: "97"
+        iconSize: "16"
+        showIconPreview: "0"
+        sortColumn: name
+        textSize: "12"
+        useRelativeDates: "1"
+  # Clear existing folder view settings to force use of default settings
+  FXInfoPanesExpanded:
+    key: FXInfoPanesExpanded
+    domain: com.apple.finder
+    state: absent
+  FXDesktopVolumePositions:
+    key: FXDesktopVolumePositions
+    domain: com.apple.finder
+    state: absent
+  # Sets default search scope to the current folder 
+  FXDefaultSearchScope:
+    key: FXDefaultSearchScope
+    domain: com.apple.finder
+    type: string
+    value: SCcf
+  # Remove trash items older than 30 days
+  FXRemoveOldTrashItems:
+    key: FXRemoveOldTrashItems
+    domain: com.apple.finder
+    type: bool
+    value: true
+  # Set the sidebar icon size to small
+  NSTableViewDefaultSizeMode:
+    key: NSTableViewDefaultSizeMode
+    domain: NSGlobalDomain
+    type: int
+    value: "1"
+  # Show status bar in Finder
+  ShowStatusBar:
+    key: ShowStatusBar
+    domain: com.apple.finder
+    type: bool
+    value: true
+  # Show path bar in Finder
+  ShowPathbar:
+    key: ShowPathbar
+    domain: com.apple.finder
+    type: bool
+    value: true
+  # Clean up Finder's sidebar
+  SidebarDevicesSectionDisclosedState:
+    key: SidebarDevicesSectionDisclosedState
+    domain: com.apple.finder
+    type: bool
+    value: true
+  SidebarPlacesSectionDisclosedState:
+    key: SidebarPlacesSectionDisclosedState
+    domain: com.apple.finder
+    type: bool
+    value: true
+  SidebarShowingiCloudDesktop:
+    key: SidebarShowingiCloudDesktop
+    domain: com.apple.finder
+    type: bool
+    value: false
+  # Keep folders on top
+  _FXSortFoldersFirst:
+    key: _FXSortFoldersFirst
+    domain: com.apple.finder
+    type: bool
+    value: true
+  # Set default location to home
+  NewWindowTarget:
+    key: NewWindowTarget
+    domain: com.apple.finder
+    type: string
+    value: PfHm
+  # Disable show items on desktop
+  CreateDesktop:
+    key: CreateDesktop
+    domain: com.apple.finder
+    type: bool
+    value: false
+#####################
+# Animations
+#####################
+  # Reduce motion in Accessibility settings (most effective)
+  reduceMotion:
+    key: reduceMotion
+    domain: com.apple.universalaccess
+    type: bool
+    value: true
+  # Disable window animations
+  NSAutomaticWindowAnimationsEnabled:
+    key: NSAutomaticWindowAnimationsEnabled
+    domain: NSGlobalDomain
+    type: bool
+    value: false
+  # Speed up window resize animations
+  NSWindowResizeTime:
+    key: NSWindowResizeTime
+    domain: NSGlobalDomain
+    type: float
+    value: "0.001"
+  # Disable smooth scrolling
+  NSScrollAnimationEnabled:
+    key: NSScrollAnimationEnabled
+    domain: NSGlobalDomain
+    type: bool
+    value: false
+  # Disable animation when opening a Quick Look window
+  QLPanelAnimationDuration:
+    key: QLPanelAnimationDuration
+    domain: NSGlobalDomain
+    type: bool
+    value: false
+  # Disable animation when opening the Info window in Finder
+  DisableAllAnimations:
+    key: DisableAllAnimations
+    domain: com.apple.finder
+    type: bool
+    value: true
+  # Speed up Mission Control animations
+  expose-animation-duration:
+    key: expose-animation-duration
+    domain: com.apple.dock
+    type: float
+    value: "0.1"
+  expose-group-apps:
+    key: expose-group-apps
+    domain: com.apple.dock
+    type: bool
+    value: true
+  # Speed up Launchpad animations
+  springboard-show-duration:
+    key: springboard-show-duration
+    domain: com.apple.dock
+    type: float
+    value: "0.1"
+  springboard-hide-duration:
+    key: springboard-hide-duration
+    domain: com.apple.dock
+    type: float
+    value: "0.1"
+  # Disable dock hiding animation
+  autohide-time-modifier:
+    key: autohide-time-modifier
+    domain: com.apple.dock
+    type: float
+    value: "0"
+  autohide-delay:
+    key: autohide-delay
+    domain: com.apple.dock
+    type: float
+    value: "0"
+  # Disable animations in Mail.app
+  DisableReplyAnimations:
+    key: DisableReplyAnimations
+    domain: com.apple.mail
+    type: bool
+    value: true
+  DisableSendAnimations:
+    key: DisableSendAnimations
+    domain: com.apple.mail
+    type: bool
+    value: true
+  # Disable zoom animation when focusing on text input fields
+  NSTextShowsControlCharacters:
+    key: NSTextShowsControlCharacters
+    domain: NSGlobalDomain
+    type: bool
+    value: true 
+

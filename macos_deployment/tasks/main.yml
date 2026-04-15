@@ -1,0 +1,13 @@
+---
+- name: Run homebrew installs tasks
+  ansible.builtin.include_tasks:
+    file: homebrew.yml
+
+- name: Run MacOS defaults tasks
+  ansible.builtin.include_tasks:
+    file: osx_defaults.yml
+
+- name: Run MacOS general tasks
+  ansible.builtin.include_tasks:
+    file: general.yml
+

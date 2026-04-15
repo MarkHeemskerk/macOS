@@ -1,0 +1,13 @@
+---
+- name: Deploy MacOS playbook
+  hosts: localhost
+  become: false
+
+  tasks:
+    - name: Run MacOS Deployment role
+      ansible.builtin.include_role:
+        name: macos_deployment
+
+    - name: Run geerlingguy macOS Dock Automation role
+      ansible.builtin.include_role:
+        name: geerlingguy.mac.dock
