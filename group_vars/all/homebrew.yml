@@ -1,0 +1,37 @@
+---
+homebrew_formulas:
+  # DONT REMOVE defaultbrowser + dockutil
+  defaultbrowser:
+  dockutil:
+  neovim:
+  fish:
+  coreutils:
+  curl:
+  fzf:
+  btop:
+  tmux:
+  fastfetch:
+  trash-cli:
+  eza:
+  zoxide:
+  tlrc:
+homebrew_casks:
+  discord:
+  bitwarden:
+  firefox:
+  obsidian:
+  webex:
+  vivaldi:
+  citrix-workspace:
+  proton-mail:
+  whatsapp:
+  lm-studio:
+  kitty:
+  vlc:
+  spotify:
+  ghostty:
+  font-hack-nerd-font:
+  nikitabobko/tap/aerospace:
+  alfred:
+homebrew_taps:
+  dail8859/notepadnext:

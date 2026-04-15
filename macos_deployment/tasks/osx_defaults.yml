@@ -1,0 +1,35 @@
+---
+- name: Configure MacOS defaults
+  loop: "{{ osx_defaults | dict2items }}"
+  loop_control:
+    loop_var: osx_defaults_loop
+    label: "{{ osx_defaults_loop.value.key }}"
+  community.general.osx_defaults:
+    key: "{{ osx_defaults_loop.value.key }}"
+    domain: "{{ osx_defaults_loop.value.domain }}"
+    type: "{{ osx_defaults_loop.value.type | default(omit) }}"
+    value: "{{ osx_defaults_loop.value.value | default(omit) }}"
+    state: "{{ osx_defaults_loop.value.state | default('present') }}"
+    array_add: "{{ osx_defaults_loop.value.array_add | default(omit) }}"
+    check_type: "{{ osx_defaults_loop.value.check_type | default(omit) }}"
+    dict_mode: "{{ osx_defaults_loop.value.dict_mode | default(omit) }}"
+    host: "{{ osx_defaults_loop.value.host | default(omit) }}"
+    path: "{{ osx_defaults_loop.value.path | default(omit) }}"
+
+- name: Remove all .DS_Store files to reset folder view settings
+  register: ds_store_files
+  ansible.builtin.find:
+    paths: "{{ ansible_facts.env.HOME }}"
+    file_type: file
+    patterns: ".DS_Store"
+    hidden: true
+    recurse: true
+
+- name: Delete found .DS_Store files
+  when: ds_store_files.files | length > 0
+  loop: "{{ ds_store_files.files }}"
+  loop_control:
+    loop_var: ds_store_files_loop
+  ansible.builtin.file:
+    path: "{{ ds_store_files_loop.path }}"
+    state: absent

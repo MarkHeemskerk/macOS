@@ -1,0 +1,42 @@
+---
+- name: Install homebrew CLI applications
+  loop: "{{ homebrew_formulas | dict2items }}"
+  loop_control:
+    loop_var: homebrew_formulas_loop
+    label: "{{ homebrew_formulas_loop.key }}"
+  community.general.homebrew:
+    name: "{{ homebrew_formulas_loop.key }}"
+    state: "{{ homebrew_formulas_loop.value.state | default('latest') }}"
+    update_homebrew: "{{ homebrew_formulas_loop.value.update_homebrew | default('true') }}"
+    force_formula: "{{ homebrew_formulas_loop.value.force_formula | default(omit) }}"
+    install_options: "{{ homebrew_formulas_loop.value.install_options | default(omit) }}"
+    path: "{{ homebrew_formulas_loop.value.path | default(omit) }}"
+    upgrade_all: "{{ homebrew_formulas_loop.value.upgrade_all | default(omit) }}"
+    upgrade_options: "{{ homebrew_formulas_loop.value.upgrade_options | default(omit) }}"
+     
+- name: Install homebrew GUI applications
+  loop: "{{ homebrew_casks | dict2items }}"
+  loop_control:
+    loop_var: homebrew_casks_loop
+    label: "{{ homebrew_casks_loop.key }}"
+  community.general.homebrew_cask:
+    name: "{{ homebrew_casks_loop.key }}"
+    state: "{{ homebrew_casks_loop.value.state | default('latest') }}"
+    sudo_password: "{{ ansible_become_pass }}"
+    accept_external_apps: "{{ homebrew_casks_loop.value.accept_external_apps | default(omit) }}"
+    greedy: "{{ homebrew_casks_loop.value.greedy | default(omit) }}"
+    install_options: "{{ homebrew_casks_loop.value.install_options | default(omit) }}"
+    path: "{{ homebrew_casks_loop.value.path | default(omit) }}"
+    update_homebrew: "{{ homebrew_casks_loop.value.update_homebrew | default(omit) }}"
+    upgrade_all: "{{ homebrew_casks_loop.value.upgrade_all | default(omit) }}"
+      
+- name: Install homebrew taps applications
+  loop: "{{ homebrew_taps | dict2items }}"
+  loop_control:
+    loop_var: homebrew_taps_loop
+    label: "{{ homebrew_taps_loop.key }}"
+  community.general.homebrew_tap:
+    name: "{{ homebrew_taps_loop.key }}"
+    state: "{{ homebrew_taps_loop.value.state | default('present') }}"
+    path: "{{ homebrew_taps_loop.value.path | default(omit) }}"
+    url: "{{ homebrew_taps_loop.value.url | default(omit) }}"

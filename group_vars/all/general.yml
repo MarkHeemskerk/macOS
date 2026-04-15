@@ -1,0 +1,16 @@
+---
+general_commands:
+  # Configure macOS black wallpaper
+  - osascript -e 'tell application "Finder" to set desktop picture to POSIX file "'"/System/Library/Desktop Pictures/Solid Colors/Black.png"'"'
+  # Remove all login items except "Alfred 5" and "AeroSpace"
+  - osascript -e 'tell application "System Events"' -e 'set allowedItems to {"Alfred 5", "AeroSpace"}' -e 'set loginItems to every login item' -e 'repeat with anItem in loginItems' -e 'if allowedItems does not contain (name of anItem) then delete anItem' -e 'end repeat' -e 'end tell'
+  # Remove all login items (startup applications)
+#  - osascript -e 'tell application "System Events" to delete every login item'
+  # Set Firefox as default browser
+  - /opt/homebrew/bin/defaultbrowser firefox
+  # Set display poweroff on battery 15 min
+  - pmset -b displaysleep 15
+  # Set display poweroff on power adapter 45 min
+  - pmset -c displaysleep 45
+  # Update tldr pages
+  - tldr -u
