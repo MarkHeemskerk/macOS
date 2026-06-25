@@ -90,11 +90,12 @@ osx_defaults:
     type: bool
     value: false
   # Disable inverted scroll (Natural Scrolling)
-  com.apple.swipescrolldirection:
-    key: com.apple.swipescrolldirection
-    domain: NSGlobalDomain
-    type: bool
-    value: true 
+  # replaced by: linearmouse cask 
+  # com.apple.swipescrolldirection:
+    # key: com.apple.swipescrolldirection
+    # domain: NSGlobalDomain
+    # type: bool
+    # value: false 
 #####################
 # Dock
 #####################

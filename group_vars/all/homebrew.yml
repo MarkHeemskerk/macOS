@@ -33,5 +33,7 @@ homebrew_casks:
   font-hack-nerd-font:
   nikitabobko/tap/aerospace:
   alfred:
+  libreoffice:
+  linearmouse:
 homebrew_taps:
   dail8859/notepadnext:
