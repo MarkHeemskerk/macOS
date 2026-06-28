@@ -96,6 +96,27 @@ osx_defaults:
     # domain: NSGlobalDomain
     # type: bool
     # value: false 
+  # Keyboard shortcuts - remap copy/paste/cut/.. to Control key (Windows-style)
+  NSUserKeyEquivalents:
+    key: NSUserKeyEquivalents
+    domain: NSGlobalDomain
+    type: dict
+    value:
+      Copy: "^c"
+      Paste: "^v"
+      Cut: "^x"
+      Undo: "^z"
+      Redo: "^y"
+      "Select All": "^a"
+      Save: "^s"
+      "Find...": "^f"
+  # Register global domain so macOS picks up the shortcuts above
+  custommenu_apps:
+    key: com.apple.custommenu.apps
+    domain: com.apple.universalaccess
+    type: array
+    value:
+      - NSGlobalDomain
 #####################
 # Dock
 #####################
@@ -390,5 +411,50 @@ osx_defaults:
     key: NSTextShowsControlCharacters
     domain: NSGlobalDomain
     type: bool
-    value: true 
+    value: true
+#####################
+# Stats
+#####################
+  # Enable CPU module in menu bar
+  CPU_state:
+    key: CPU_state
+    domain: eu.exelban.Stats
+    type: bool
+    value: true
+  # Enable GPU module in menu bar
+  GPU_state:
+    key: GPU_state
+    domain: eu.exelban.Stats
+    type: bool
+    value: true
+  # Enable RAM module in menu bar
+  RAM_state:
+    key: RAM_state
+    domain: eu.exelban.Stats
+    type: bool
+    value: true
+  # Enable Network module in menu bar
+  Network_state:
+    key: Network_state
+    domain: eu.exelban.Stats
+    type: bool
+    value: true
+  # Disable Disk module in menu bar
+  Disk_state:
+    key: Disk_state
+    domain: eu.exelban.Stats
+    type: bool
+    value: false
+  # Disable Battery module in menu bar
+  Battery_state:
+    key: Battery_state
+    domain: eu.exelban.Stats
+    type: bool
+    value: false
+  # Disable Sensors module in menu bar
+  Sensors_state:
+    key: Sensors_state
+    domain: eu.exelban.Stats
+    type: bool
+    value: false
 

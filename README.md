@@ -37,7 +37,7 @@ brew install ansible
 ### 3. Clone this repository
 
 ```bash
-git clone git@github.com:MarkHeemskerk/macos.git
+git clone https://github.com/MarkHeemskerk/macos.git
 cd macos
 ```
 
