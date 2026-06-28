@@ -14,3 +14,7 @@ general_commands:
   - pmset -c displaysleep 45
   # Update tldr pages
   - tldr -u
+  # Set dynamic hostname
+  - scutil --set ComputerName "{{ dynamic_hostname }}"
+  - scutil --set LocalHostName "{{ dynamic_hostname }}"
+  - scutil --set HostName "{{ dynamic_hostname }}"

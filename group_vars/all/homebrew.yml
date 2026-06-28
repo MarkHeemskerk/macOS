@@ -35,5 +35,7 @@ homebrew_casks:
   alfred:
   libreoffice:
   linearmouse:
+  battery:
+  stats:
 homebrew_taps:
   dail8859/notepadnext:

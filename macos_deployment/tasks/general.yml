@@ -33,6 +33,39 @@
     backrefs: true
     backup: true
 
+- name: Check if device has a battery
+  ansible.builtin.command: ioreg -rc AppleSmartBattery
+  register: battery_check
+  changed_when: false
+  failed_when: false
+
+- name: Check if battery CLI is installed
+  ansible.builtin.command: which battery
+  register: battery_which
+  changed_when: false
+  failed_when: false
+
+- name: Warn if battery CLI not yet initialized
+  when: battery_check.stdout | length > 0 and battery_which.rc != 0
+  ansible.builtin.debug:
+    msg: "Battery app needs to be opened once manually to initialize the CLI daemon."
+
+- name: Set battery charge limit to maintain 70% - 80%
+  when: battery_check.stdout | length > 0 and battery_which.rc == 0
+  ansible.builtin.command: battery maintain 70-80
+
+- name: Get hardware info
+  ansible.builtin.command: system_profiler SPHardwareDataType
+  register: hardware_info
+  changed_when: false
+
+- name: Set dynamic hostname
+  ansible.builtin.set_fact:
+    dynamic_hostname: >-
+      {{ hardware_info.stdout | regex_search('Model Name: (.+)', '\1') | first | lower | replace(' ', '') -}}
+      {{ hardware_info.stdout | regex_search('Chip: Apple (M\d+)', '\1') | first | lower -}}
+      {{ hardware_info.stdout | regex_search('Memory: (\d+) GB', '\1') | first -}}gb
+
 - name: Run general commands
   become: true
   loop: "{{ general_commands }}"
