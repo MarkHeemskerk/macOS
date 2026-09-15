@@ -1,6 +1,7 @@
 ---
 - name: Deploy MacOS playbook
   hosts: localhost
+  connection: local
   become: false
 
   tasks:

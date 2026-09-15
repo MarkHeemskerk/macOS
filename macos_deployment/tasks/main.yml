@@ -1,7 +1,11 @@
 ---
-- name: Run homebrew installs tasks
+- name: Run homebrew install tasks
   ansible.builtin.include_tasks:
     file: homebrew.yml
+
+- name: Run mas (Mac App Store) install tasks
+  ansible.builtin.include_tasks:
+    file: mas.yml
 
 - name: Run MacOS defaults tasks
   ansible.builtin.include_tasks:

@@ -25,21 +25,15 @@ dockitems_persist:
   - name: "Bitwarden"
     path: "/Applications/Bitwarden.app"
     pos: 3
-  - name: "Proton-Mail"
-    path: "/Applications/Proton Mail.app"
-    pos: 4
-  - name: "WhatsApp"
-    path: "/Applications/WhatsApp.app"
-    pos: 6
   - name: "Discord"
     path: "/Applications/Discord.app"
-    pos: 7
+    pos: 4
   - name: "Webex"
     path: "/Applications/Webex.app"
-    pos: 8
+    pos: 5
   - name: "Obsidian"
     path: "/Applications/Obsidian.app"
-    pos: 9
+    pos: 6
   - name: "System Settings"
     path: "/Applications/System Settings.app"
-    pos: 10
+    pos: 7

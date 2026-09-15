@@ -1,0 +1,10 @@
+---
+- name: Install mas applications
+  loop: "{{ mas_applications | dict2items }}"
+  loop_control:
+    loop_var: mas_applications_loop
+    label: "{{ mas_applications_loop.value.app }}"
+  community.general.mas:
+    id: "{{ mas_applications_loop.key }}"
+    state: "{{ mas_applications_loop.value.state | default('present') }}"
+    upgrade_all: "{{ mas_applications_loop.value.upgrade_all | default(omit) }}"

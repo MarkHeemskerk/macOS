@@ -15,27 +15,31 @@ homebrew_formulas:
   eza:
   zoxide:
   tlrc:
+  omlx:
+  mas:
+  superfile:
+  syncthing:
 homebrew_casks:
   discord:
   bitwarden:
   firefox:
   obsidian:
   webex:
-  vivaldi:
   citrix-workspace:
-  proton-mail:
-  whatsapp:
-  lm-studio:
   kitty:
   vlc:
   spotify:
-  ghostty:
   font-hack-nerd-font:
   nikitabobko/tap/aerospace:
-  alfred:
   libreoffice:
-  linearmouse:
   battery:
-  stats:
+  protonvpn:
+  docker:
+  rustdesk:
+  vorssaint:
+  ungoogled-chromium:
+  nextcloud:
 homebrew_taps:
   dail8859/notepadnext:
+  jundot/omlx:
+    url: https://github.com/jundot/omlx
