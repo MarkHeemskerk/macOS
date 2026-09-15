@@ -1,4 +1,15 @@
 ---
+- name: Install homebrew taps applications
+  loop: "{{ homebrew_taps | dict2items }}"
+  loop_control:
+    loop_var: homebrew_taps_loop
+    label: "{{ homebrew_taps_loop.key }}"
+  community.general.homebrew_tap:
+    name: "{{ homebrew_taps_loop.key }}"
+    state: "{{ homebrew_taps_loop.value.state | default('present') }}"
+    path: "{{ homebrew_taps_loop.value.path | default(omit) }}"
+    url: "{{ homebrew_taps_loop.value.url | default(omit) }}"
+
 - name: Install homebrew CLI applications
   loop: "{{ homebrew_formulas | dict2items }}"
   loop_control:
@@ -28,15 +39,4 @@
     install_options: "{{ homebrew_casks_loop.value.install_options | default(omit) }}"
     path: "{{ homebrew_casks_loop.value.path | default(omit) }}"
     update_homebrew: "{{ homebrew_casks_loop.value.update_homebrew | default(omit) }}"
-    upgrade_all: "{{ homebrew_casks_loop.value.upgrade_all | default(omit) }}"
-      
-- name: Install homebrew taps applications
-  loop: "{{ homebrew_taps | dict2items }}"
-  loop_control:
-    loop_var: homebrew_taps_loop
-    label: "{{ homebrew_taps_loop.key }}"
-  community.general.homebrew_tap:
-    name: "{{ homebrew_taps_loop.key }}"
-    state: "{{ homebrew_taps_loop.value.state | default('present') }}"
-    path: "{{ homebrew_taps_loop.value.path | default(omit) }}"
-    url: "{{ homebrew_taps_loop.value.url | default(omit) }}"
+    upgrade_all: "{{ homebrew_casks_loop.value.upgrade_all | default(omit) }}"      

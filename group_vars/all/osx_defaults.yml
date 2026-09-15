@@ -97,19 +97,19 @@ osx_defaults:
     # type: bool
     # value: false 
   # Keyboard shortcuts - remap copy/paste/cut/.. to Control key (Windows-style)
-  NSUserKeyEquivalents:
-    key: NSUserKeyEquivalents
-    domain: NSGlobalDomain
-    type: dict
-    value:
-      Copy: "^c"
-      Paste: "^v"
-      Cut: "^x"
-      Undo: "^z"
-      Redo: "^y"
-      "Select All": "^a"
-      Save: "^s"
-      "Find...": "^f"
+  #NSUserKeyEquivalents:
+  #  key: NSUserKeyEquivalents
+  #  domain: NSGlobalDomain
+  #  type: dict
+  #  value:
+  #    Copy: "^c"
+  #    Paste: "^v"
+  #    Cut: "^x"
+  #    Undo: "^z"
+  #    Redo: "^y"
+  #    "Select All": "^a"
+  #    Save: "^s"
+  #    "Find...": "^f"
   # Register global domain so macOS picks up the shortcuts above
   custommenu_apps:
     key: com.apple.custommenu.apps
@@ -117,6 +117,12 @@ osx_defaults:
     type: array
     value:
       - NSGlobalDomain
+  # Enable three finger drag (to select content)
+  TrackpadThreeFingerDrag:
+    key: TrackpadThreeFingerDrag
+    domain: com.apple.AppleMultitouchTrackpad
+    type: bool
+    value: true
 #####################
 # Dock
 #####################
