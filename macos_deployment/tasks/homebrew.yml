@@ -1,5 +1,6 @@
 ---
 - name: Install homebrew taps applications
+  ignore_errors: true
   loop: "{{ homebrew_taps | dict2items }}"
   loop_control:
     loop_var: homebrew_taps_loop
@@ -9,6 +10,7 @@
     state: "{{ homebrew_taps_loop.value.state | default('present') }}"
     path: "{{ homebrew_taps_loop.value.path | default(omit) }}"
     url: "{{ homebrew_taps_loop.value.url | default(omit) }}"
+    trust: "{{ homebrew_taps_loop.value.trust | default('true') }}"
 
 - name: Install homebrew CLI applications
   loop: "{{ homebrew_formulas | dict2items }}"
