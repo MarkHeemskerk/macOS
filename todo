@@ -1,0 +1,7 @@
+Host *
+    IdentityAgent ~/.bitwarden-ssh-agent.sock
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
+
+set -gx SSH_AUTH_SOCK $SSH_AUTH_SOCK /User/mark/.bitwarden-ssh-agent.sock

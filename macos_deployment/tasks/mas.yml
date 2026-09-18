@@ -1,5 +1,7 @@
 ---
 - name: Install mas applications
+  register: mas_install_result
+  ignore_errors: true
   loop: "{{ mas_applications | dict2items }}"
   loop_control:
     loop_var: mas_applications_loop
@@ -8,3 +10,16 @@
     id: "{{ mas_applications_loop.key }}"
     state: "{{ mas_applications_loop.value.state | default('present') }}"
     upgrade_all: "{{ mas_applications_loop.value.upgrade_all | default(omit) }}"
+
+- name: Warn about failed mas installs
+  when: mas_install_result_loop.failed | default(false)
+  loop: "{{ mas_install_result.results }}"
+  loop_control:
+    loop_var: mas_install_result_loop
+    label: "{{ mas_install_result_loop.mas_applications_loop.value.app }}"
+  ansible.builtin.debug:
+    msg: >-
+      mas cli failed to install "{{ mas_install_result_loop.mas_applications_loop.value.app }}"
+      (id {{ mas_install_result_loop.mas_applications_loop.key }}). You are probably not logged
+      in to the App Store — open the App Store app, sign in, then re-run
+      this playbook.
